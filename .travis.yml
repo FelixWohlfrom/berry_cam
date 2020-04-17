@@ -1,0 +1,20 @@
+language: python
+
+python:
+  - "3.5"
+  - "3.6"
+  - "3.7"
+  - "3.8"
+
+# Install dependencies
+install:
+  - pip install -e .[test]
+
+# Run tests and generate coverage report
+script:
+  - coverage run -m pytest
+  - coverage report
+
+# Collect coverage
+after_success:
+  bash <(curl -s https://codecov.io/bash)
